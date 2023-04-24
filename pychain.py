@@ -46,15 +46,13 @@ import hashlib
 # Note that you’ll use this new `Record` class as the data type of your `record` attribute in the next section.
 
 
-# @TODO
 # Create a Record Data Class that consists of the `sender`, `receiver`, and
 # `amount` attributes
 @dataclass
 class Record:
-    sender : str
-    receiver : str
-    amount : float
-
+    sender: str
+    receiver: str
+    amount: float
 
 ################################################################################
 # Step 2:
@@ -150,7 +148,7 @@ def setup():
 
 
 st.markdown("# PyChain")
-st.markdown("## Store Transaction Record in the PyChain")
+st.markdown("## Store a Transaction Record in the PyChain")
 
 pychain = setup()
 
@@ -170,7 +168,7 @@ pychain = setup()
 
 # @TODO:
 # Delete the `input_data` variable from the Streamlit interface.
-# input_data = st.text_input("Block Data")
+input_data = st.text_input("Block Data")
 
 # @TODO:
 # Add an input area where you can get a value for `sender` from the user.
@@ -193,17 +191,17 @@ if st.button("Add Block"):
     # which is set equal to a `Record` that contains the `sender`, `receiver`,
     # and `amount` values
     new_block = Block(
-        #data=input_data,
+        record=Record(sender, receiver, amount),
+        # data=input_data,
         creator_id=42,
-        prev_hash=prev_block_hash,
-        record = Record(sender, receiver, amount)
+        prev_hash=prev_block_hash
     )
 
     pychain.add_block(new_block)
     st.balloons()
 
 ################################################################################
-# Streamlit Code (continues)
+# Streamlit Code (continue)
 
 st.markdown("## The PyChain Ledger")
 
